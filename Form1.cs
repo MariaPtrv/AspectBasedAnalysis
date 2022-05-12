@@ -2,13 +2,12 @@
 {
   public partial class Form1 : Form
   {
-    new List<string> aspectsList = new();
     public Form1()
     {
       InitializeComponent();
-      aspectsList.Add("Врач");
-      aspectsList.Add("Стоимость");
-      aspectsList.Add("Качество");
+      AspectsCheckedListBox.Items.Add("врач", false);
+      AspectsCheckedListBox.Items.Add("стоимость", false);
+      AspectsCheckedListBox.Items.Add("качество", false);
     }
 
     private void button2_Click(object sender, EventArgs e)
@@ -23,25 +22,16 @@
 
     private void button1_Click(object sender, EventArgs e)
     {
-      if (newAspectTextBox.Text.Length != 0 && !aspectsList.Contains(newAspectTextBox.Text))
+      if (newAspectTextBox.Text.Length != 0
+        && !AspectsCheckedListBox.Items.Contains(newAspectTextBox.Text)
+        && !AspectsCheckedListBox.Items.Contains(newAspectTextBox.Text.ToLower()))
       {
-        aspectsList.Add(newAspectTextBox.Text);
-        AspectsCheckedListBox_Update();
-      } 
-      else
-      {
-
+        AspectsCheckedListBox.Items.Add(newAspectTextBox.Text.ToLower(), true);
+        newAspectTextBox.Text = String.Empty;
       }
-    }
-
-    private void AspectsCheckedListBox_Update()
-    {
-      var checkedAspects = new List<string>();
-      foreach (var item in AspectsCheckedListBox.CheckedItems)
-        checkedAspects.Add(item.ToString());
-
-      checkedAspects.AddRange(checkedAspects);
-      AspectsCheckedListBox.Items.AddRange(aspectsList.ToArray());
+      else
+        MessageBox.Show("Такой аспект уже добавлен", "Error",
+          MessageBoxButtons.OK, MessageBoxIcon.Error);
     }
   }
 }

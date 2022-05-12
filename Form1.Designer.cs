@@ -39,7 +39,7 @@
       this.textBox2 = new System.Windows.Forms.TextBox();
       this.button2 = new System.Windows.Forms.Button();
       this.label1 = new System.Windows.Forms.Label();
-      this.groupBox2 = new System.Windows.Forms.GroupBox();
+      this.groupAspectsList = new System.Windows.Forms.GroupBox();
       this.AspectsCheckedListBox = new System.Windows.Forms.CheckedListBox();
       this.button3 = new System.Windows.Forms.Button();
       this.checkBox1 = new System.Windows.Forms.CheckBox();
@@ -47,7 +47,7 @@
       this.openFileDialog1 = new System.Windows.Forms.OpenFileDialog();
       ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).BeginInit();
       this.groupBox1.SuspendLayout();
-      this.groupBox2.SuspendLayout();
+      this.groupAspectsList.SuspendLayout();
       this.groupBox3.SuspendLayout();
       this.SuspendLayout();
       // 
@@ -158,25 +158,29 @@
       this.label1.TabIndex = 6;
       this.label1.Text = "label1";
       // 
-      // groupBox2
+      // groupAspectsList
       // 
-      this.groupBox2.Controls.Add(this.AspectsCheckedListBox);
-      this.groupBox2.Controls.Add(this.newAspectTextBox);
-      this.groupBox2.Controls.Add(this.button1);
-      this.groupBox2.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
-      this.groupBox2.Location = new System.Drawing.Point(14, 213);
-      this.groupBox2.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
-      this.groupBox2.Name = "groupBox2";
-      this.groupBox2.Padding = new System.Windows.Forms.Padding(3, 4, 3, 4);
-      this.groupBox2.Size = new System.Drawing.Size(383, 296);
-      this.groupBox2.TabIndex = 5;
-      this.groupBox2.TabStop = false;
-      this.groupBox2.Text = "groupBox2";
+      this.groupAspectsList.BackColor = System.Drawing.Color.White;
+      this.groupAspectsList.Controls.Add(this.AspectsCheckedListBox);
+      this.groupAspectsList.Controls.Add(this.newAspectTextBox);
+      this.groupAspectsList.Controls.Add(this.button1);
+      this.groupAspectsList.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
+      this.groupAspectsList.ForeColor = System.Drawing.Color.Black;
+      this.groupAspectsList.Location = new System.Drawing.Point(14, 213);
+      this.groupAspectsList.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
+      this.groupAspectsList.Name = "groupAspectsList";
+      this.groupAspectsList.Padding = new System.Windows.Forms.Padding(3, 4, 3, 4);
+      this.groupAspectsList.RightToLeft = System.Windows.Forms.RightToLeft.No;
+      this.groupAspectsList.Size = new System.Drawing.Size(383, 296);
+      this.groupAspectsList.TabIndex = 5;
+      this.groupAspectsList.TabStop = false;
+      this.groupAspectsList.Text = "Список аспектов";
       // 
       // AspectsCheckedListBox
       // 
+      this.AspectsCheckedListBox.BackColor = System.Drawing.Color.White;
       this.AspectsCheckedListBox.FormattingEnabled = true;
-      this.AspectsCheckedListBox.Location = new System.Drawing.Point(19, 68);
+      this.AspectsCheckedListBox.Location = new System.Drawing.Point(19, 63);
       this.AspectsCheckedListBox.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
       this.AspectsCheckedListBox.Name = "AspectsCheckedListBox";
       this.AspectsCheckedListBox.Size = new System.Drawing.Size(263, 214);
@@ -231,7 +235,7 @@
       this.BackColor = System.Drawing.Color.White;
       this.ClientSize = new System.Drawing.Size(1293, 757);
       this.Controls.Add(this.groupBox3);
-      this.Controls.Add(this.groupBox2);
+      this.Controls.Add(this.groupAspectsList);
       this.Controls.Add(this.dataGridView1);
       this.Controls.Add(this.groupBox1);
       this.Font = new System.Drawing.Font("Arial Narrow", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
@@ -247,8 +251,8 @@
       ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).EndInit();
       this.groupBox1.ResumeLayout(false);
       this.groupBox1.PerformLayout();
-      this.groupBox2.ResumeLayout(false);
-      this.groupBox2.PerformLayout();
+      this.groupAspectsList.ResumeLayout(false);
+      this.groupAspectsList.PerformLayout();
       this.groupBox3.ResumeLayout(false);
       this.groupBox3.PerformLayout();
       this.ResumeLayout(false);
@@ -267,7 +271,7 @@
     private TextBox textBox2;
     private Button button2;
     private Label label1;
-    private GroupBox groupBox2;
+    private GroupBox groupAspectsList;
     private CheckedListBox AspectsCheckedListBox;
     private Button button3;
     private CheckBox checkBox1;
