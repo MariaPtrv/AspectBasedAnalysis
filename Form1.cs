@@ -96,5 +96,19 @@ namespace AspectBasedAnalysis
                              MessageBoxButtons.OK, MessageBoxIcon.Error);
 
     }
+
+    private void button3_Click(object sender, EventArgs e)
+    {
+
+    }
+
+    private void reviewSourseTextBox_TextChanged(object sender, EventArgs e)
+    {
+      if (File.Exists(reviewSourseTextBox.Text))
+        SourseTypeLabel.Text = Path.GetExtension(reviewSourseTextBox.Text) + " файл";
+      else if (isReviewLink(reviewSourseTextBox.Text))
+        SourseTypeLabel.Text = "otzovik.com";
+      else SourseTypeLabel.Text = "не определено";
+    }
   }
 }
