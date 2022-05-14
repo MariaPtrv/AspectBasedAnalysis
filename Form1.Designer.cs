@@ -52,23 +52,31 @@
       this.label5 = new System.Windows.Forms.Label();
       this.label6 = new System.Windows.Forms.Label();
       this.label7 = new System.Windows.Forms.Label();
-      this.label8 = new System.Windows.Forms.Label();
-      this.label9 = new System.Windows.Forms.Label();
-      this.button3 = new System.Windows.Forms.Button();
+      this.RenderButton = new System.Windows.Forms.Button();
+      this.StatisticsGroupBox = new System.Windows.Forms.GroupBox();
+      this.NeutralAspectsCountLabel = new System.Windows.Forms.Label();
+      this.label12 = new System.Windows.Forms.Label();
+      this.NegAspectsCountLabel = new System.Windows.Forms.Label();
+      this.PosAspectsCountLabel = new System.Windows.Forms.Label();
+      this.ToneWordsCount = new System.Windows.Forms.Label();
+      this.AspectsCountLabel = new System.Windows.Forms.Label();
       ((System.ComponentModel.ISupportInitialize)(this.ResultDataGridView)).BeginInit();
       this.groupBox1.SuspendLayout();
       this.groupAspectsList.SuspendLayout();
+      this.StatisticsGroupBox.SuspendLayout();
       this.SuspendLayout();
       // 
       // ResultDataGridView
       // 
       this.ResultDataGridView.BackgroundColor = System.Drawing.Color.White;
+      this.ResultDataGridView.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D;
       this.ResultDataGridView.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
       this.ResultDataGridView.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
             this.AspectColumn,
             this.DescColumn,
             this.TonalityColumn});
-      this.ResultDataGridView.Location = new System.Drawing.Point(482, 225);
+      this.ResultDataGridView.GridColor = System.Drawing.Color.LightGray;
+      this.ResultDataGridView.Location = new System.Drawing.Point(478, 22);
       this.ResultDataGridView.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
       this.ResultDataGridView.Name = "ResultDataGridView";
       this.ResultDataGridView.RowTemplate.Height = 25;
@@ -103,7 +111,7 @@
       this.newAspectTextBox.Location = new System.Drawing.Point(19, 29);
       this.newAspectTextBox.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
       this.newAspectTextBox.Name = "newAspectTextBox";
-      this.newAspectTextBox.Size = new System.Drawing.Size(263, 26);
+      this.newAspectTextBox.Size = new System.Drawing.Size(329, 26);
       this.newAspectTextBox.TabIndex = 1;
       // 
       // button1
@@ -113,7 +121,7 @@
       this.button1.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
       this.button1.Font = new System.Drawing.Font("Arial Narrow", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
       this.button1.ForeColor = System.Drawing.Color.Teal;
-      this.button1.Location = new System.Drawing.Point(288, 29);
+      this.button1.Location = new System.Drawing.Point(354, 29);
       this.button1.Name = "button1";
       this.button1.RightToLeft = System.Windows.Forms.RightToLeft.Yes;
       this.button1.Size = new System.Drawing.Size(27, 26);
@@ -205,7 +213,7 @@
       // 
       this.SourseTypeLabel.AutoSize = true;
       this.SourseTypeLabel.Font = new System.Drawing.Font("Arial Narrow", 12F, System.Drawing.FontStyle.Italic, System.Drawing.GraphicsUnit.Point);
-      this.SourseTypeLabel.Location = new System.Drawing.Point(130, 140); 
+      this.SourseTypeLabel.Location = new System.Drawing.Point(130, 140);
       this.SourseTypeLabel.Name = "SourseTypeLabel";
       this.SourseTypeLabel.Size = new System.Drawing.Size(0, 20);
       this.SourseTypeLabel.TabIndex = 6;
@@ -235,7 +243,7 @@
       this.AspectsCheckedListBox.Location = new System.Drawing.Point(19, 63);
       this.AspectsCheckedListBox.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
       this.AspectsCheckedListBox.Name = "AspectsCheckedListBox";
-      this.AspectsCheckedListBox.Size = new System.Drawing.Size(263, 193);
+      this.AspectsCheckedListBox.Size = new System.Drawing.Size(329, 193);
       this.AspectsCheckedListBox.TabIndex = 4;
       // 
       // AnalysButton
@@ -262,7 +270,7 @@
       this.NoResultLabel.BackColor = System.Drawing.Color.Transparent;
       this.NoResultLabel.Font = new System.Drawing.Font("Arial Narrow", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
       this.NoResultLabel.ForeColor = System.Drawing.Color.Silver;
-      this.NoResultLabel.Location = new System.Drawing.Point(707, 310);
+      this.NoResultLabel.Location = new System.Drawing.Point(769, 242);
       this.NoResultLabel.Name = "NoResultLabel";
       this.NoResultLabel.Size = new System.Drawing.Size(228, 23);
       this.NoResultLabel.TabIndex = 12;
@@ -271,7 +279,7 @@
       // label4
       // 
       this.label4.AutoSize = true;
-      this.label4.Location = new System.Drawing.Point(482, 23);
+      this.label4.Location = new System.Drawing.Point(17, 28);
       this.label4.Margin = new System.Windows.Forms.Padding(3, 5, 3, 0);
       this.label4.Name = "label4";
       this.label4.Size = new System.Drawing.Size(145, 20);
@@ -281,7 +289,7 @@
       // label5
       // 
       this.label5.AutoSize = true;
-      this.label5.Location = new System.Drawing.Point(482, 48);
+      this.label5.Location = new System.Drawing.Point(17, 54);
       this.label5.Margin = new System.Windows.Forms.Padding(3, 5, 3, 0);
       this.label5.Name = "label5";
       this.label5.Size = new System.Drawing.Size(190, 20);
@@ -291,7 +299,7 @@
       // label6
       // 
       this.label6.AutoSize = true;
-      this.label6.Location = new System.Drawing.Point(482, 76);
+      this.label6.Location = new System.Drawing.Point(17, 79);
       this.label6.Margin = new System.Windows.Forms.Padding(3, 5, 3, 0);
       this.label6.Name = "label6";
       this.label6.Size = new System.Drawing.Size(248, 20);
@@ -301,46 +309,110 @@
       // label7
       // 
       this.label7.AutoSize = true;
-      this.label7.Location = new System.Drawing.Point(482, 101);
+      this.label7.Location = new System.Drawing.Point(17, 104);
       this.label7.Margin = new System.Windows.Forms.Padding(3, 5, 3, 0);
       this.label7.Name = "label7";
       this.label7.Size = new System.Drawing.Size(219, 20);
       this.label7.TabIndex = 16;
       this.label7.Text = "Количество негативных аспектов:";
       // 
-      // label8
+      // RenderButton
       // 
-      this.label8.AutoSize = true;
-      this.label8.Location = new System.Drawing.Point(482, 126);
-      this.label8.Margin = new System.Windows.Forms.Padding(3, 5, 3, 0);
-      this.label8.Name = "label8";
-      this.label8.Size = new System.Drawing.Size(230, 20);
-      this.label8.TabIndex = 17;
-      this.label8.Text = "Количество нейтральных аспектов:";
+      this.RenderButton.BackColor = System.Drawing.Color.White;
+      this.RenderButton.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
+      this.RenderButton.ForeColor = System.Drawing.Color.Black;
+      this.RenderButton.Location = new System.Drawing.Point(1116, 400);
+      this.RenderButton.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
+      this.RenderButton.Name = "RenderButton";
+      this.RenderButton.Size = new System.Drawing.Size(145, 31);
+      this.RenderButton.TabIndex = 19;
+      this.RenderButton.Text = "Визуализировать";
+      this.RenderButton.UseVisualStyleBackColor = false;
+      this.RenderButton.Click += new System.EventHandler(this.RenderButton_Click);
       // 
-      // label9
+      // StatisticsGroupBox
       // 
-      this.label9.AutoSize = true;
-      this.label9.Location = new System.Drawing.Point(741, 23);
-      this.label9.Margin = new System.Windows.Forms.Padding(3, 5, 3, 0);
-      this.label9.Name = "label9";
-      this.label9.Size = new System.Drawing.Size(145, 20);
-      this.label9.TabIndex = 18;
-      this.label9.Text = "Количество аспектов:";
+      this.StatisticsGroupBox.BackColor = System.Drawing.Color.White;
+      this.StatisticsGroupBox.Controls.Add(this.NeutralAspectsCountLabel);
+      this.StatisticsGroupBox.Controls.Add(this.label12);
+      this.StatisticsGroupBox.Controls.Add(this.NegAspectsCountLabel);
+      this.StatisticsGroupBox.Controls.Add(this.PosAspectsCountLabel);
+      this.StatisticsGroupBox.Controls.Add(this.ToneWordsCount);
+      this.StatisticsGroupBox.Controls.Add(this.AspectsCountLabel);
+      this.StatisticsGroupBox.Controls.Add(this.label4);
+      this.StatisticsGroupBox.Controls.Add(this.label5);
+      this.StatisticsGroupBox.Controls.Add(this.label6);
+      this.StatisticsGroupBox.Controls.Add(this.label7);
+      this.StatisticsGroupBox.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
+      this.StatisticsGroupBox.ForeColor = System.Drawing.Color.Black;
+      this.StatisticsGroupBox.Location = new System.Drawing.Point(478, 394);
+      this.StatisticsGroupBox.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
+      this.StatisticsGroupBox.Name = "StatisticsGroupBox";
+      this.StatisticsGroupBox.Padding = new System.Windows.Forms.Padding(3, 4, 3, 4);
+      this.StatisticsGroupBox.RightToLeft = System.Windows.Forms.RightToLeft.No;
+      this.StatisticsGroupBox.Size = new System.Drawing.Size(425, 165);
+      this.StatisticsGroupBox.TabIndex = 6;
+      this.StatisticsGroupBox.TabStop = false;
       // 
-      // button3
+      // NeutralAspectsCountLabel
       // 
-      this.button3.BackColor = System.Drawing.Color.White;
-      this.button3.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
-      this.button3.ForeColor = System.Drawing.Color.Black;
-      this.button3.Location = new System.Drawing.Point(482, 186);
-      this.button3.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
-      this.button3.Name = "button3";
-      this.button3.Size = new System.Drawing.Size(145, 31);
-      this.button3.TabIndex = 19;
-      this.button3.Text = "Визуализировать";
-      this.button3.UseVisualStyleBackColor = false;
-      this.button3.Click += new System.EventHandler(this.button3_Click);
+      this.NeutralAspectsCountLabel.AutoSize = true;
+      this.NeutralAspectsCountLabel.Location = new System.Drawing.Point(368, 129);
+      this.NeutralAspectsCountLabel.Margin = new System.Windows.Forms.Padding(3, 5, 3, 0);
+      this.NeutralAspectsCountLabel.Name = "NeutralAspectsCountLabel";
+      this.NeutralAspectsCountLabel.Size = new System.Drawing.Size(30, 20);
+      this.NeutralAspectsCountLabel.TabIndex = 22;
+      this.NeutralAspectsCountLabel.Text = "000";
+      // 
+      // label12
+      // 
+      this.label12.AutoSize = true;
+      this.label12.Location = new System.Drawing.Point(17, 129);
+      this.label12.Margin = new System.Windows.Forms.Padding(3, 5, 3, 0);
+      this.label12.Name = "label12";
+      this.label12.Size = new System.Drawing.Size(230, 20);
+      this.label12.TabIndex = 21;
+      this.label12.Text = "Количество нейтральных аспектов:";
+      // 
+      // NegAspectsCountLabel
+      // 
+      this.NegAspectsCountLabel.AutoSize = true;
+      this.NegAspectsCountLabel.Location = new System.Drawing.Point(368, 100);
+      this.NegAspectsCountLabel.Margin = new System.Windows.Forms.Padding(3, 5, 3, 0);
+      this.NegAspectsCountLabel.Name = "NegAspectsCountLabel";
+      this.NegAspectsCountLabel.Size = new System.Drawing.Size(30, 20);
+      this.NegAspectsCountLabel.TabIndex = 20;
+      this.NegAspectsCountLabel.Text = "000";
+      // 
+      // PosAspectsCountLabel
+      // 
+      this.PosAspectsCountLabel.AutoSize = true;
+      this.PosAspectsCountLabel.Location = new System.Drawing.Point(368, 75);
+      this.PosAspectsCountLabel.Margin = new System.Windows.Forms.Padding(3, 5, 3, 0);
+      this.PosAspectsCountLabel.Name = "PosAspectsCountLabel";
+      this.PosAspectsCountLabel.Size = new System.Drawing.Size(30, 20);
+      this.PosAspectsCountLabel.TabIndex = 19;
+      this.PosAspectsCountLabel.Text = "000";
+      // 
+      // ToneWordsCount
+      // 
+      this.ToneWordsCount.AutoSize = true;
+      this.ToneWordsCount.Location = new System.Drawing.Point(368, 50);
+      this.ToneWordsCount.Margin = new System.Windows.Forms.Padding(3, 5, 3, 0);
+      this.ToneWordsCount.Name = "ToneWordsCount";
+      this.ToneWordsCount.Size = new System.Drawing.Size(30, 20);
+      this.ToneWordsCount.TabIndex = 18;
+      this.ToneWordsCount.Text = "000";
+      // 
+      // AspectsCountLabel
+      // 
+      this.AspectsCountLabel.AutoSize = true;
+      this.AspectsCountLabel.Location = new System.Drawing.Point(368, 28);
+      this.AspectsCountLabel.Margin = new System.Windows.Forms.Padding(3, 5, 3, 0);
+      this.AspectsCountLabel.Name = "AspectsCountLabel";
+      this.AspectsCountLabel.Size = new System.Drawing.Size(30, 20);
+      this.AspectsCountLabel.TabIndex = 17;
+      this.AspectsCountLabel.Text = "000";
       // 
       // Form1
       // 
@@ -348,13 +420,8 @@
       this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
       this.BackColor = System.Drawing.Color.White;
       this.ClientSize = new System.Drawing.Size(1276, 606);
-      this.Controls.Add(this.button3);
-      this.Controls.Add(this.label9);
-      this.Controls.Add(this.label8);
-      this.Controls.Add(this.label7);
-      this.Controls.Add(this.label6);
-      this.Controls.Add(this.label5);
-      this.Controls.Add(this.label4);
+      this.Controls.Add(this.StatisticsGroupBox);
+      this.Controls.Add(this.RenderButton);
       this.Controls.Add(this.NoResultLabel);
       this.Controls.Add(this.AnalysButton);
       this.Controls.Add(this.groupAspectsList);
@@ -376,6 +443,8 @@
       this.groupBox1.PerformLayout();
       this.groupAspectsList.ResumeLayout(false);
       this.groupAspectsList.PerformLayout();
+      this.StatisticsGroupBox.ResumeLayout(false);
+      this.StatisticsGroupBox.PerformLayout();
       this.ResumeLayout(false);
       this.PerformLayout();
 
@@ -406,8 +475,13 @@
     private Label label5;
     private Label label6;
     private Label label7;
-    private Label label8;
-    private Label label9;
-    private Button button3;
+    private Button RenderButton;
+    private GroupBox StatisticsGroupBox;
+    private Label NeutralAspectsCountLabel;
+    private Label label12;
+    private Label NegAspectsCountLabel;
+    private Label PosAspectsCountLabel;
+    private Label ToneWordsCount;
+    private Label AspectsCountLabel;
   }
 }

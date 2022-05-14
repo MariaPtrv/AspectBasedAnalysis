@@ -29,6 +29,8 @@ namespace AspectBasedAnalysis
       AspectsCheckedListBox.Items.Add("стоимость", false);
       AspectsCheckedListBox.Items.Add("качество", false);
       ResultDataGridView.Visible = false;
+      RenderButton.Visible = false;
+      StatisticsGroupBox.Visible = false;
     }
 
     private void button2_Click(object sender, EventArgs e)
@@ -86,10 +88,11 @@ namespace AspectBasedAnalysis
 
       if (AspectsCheckedListBox.CheckedItems.Count > 0 && hasSourse)
       {
+        NoResultLabel.Visible = false;
         //стянуть настройки
         //запустить питон код
         //предоставить результат
-        
+
       }
       else MessageBox.Show("Для выполнения анализа необходимо указать: \n- Источник отзывов\n- Перечень анализируемых аспектов", 
                             "Невозможно выполнить анализ",
@@ -97,7 +100,7 @@ namespace AspectBasedAnalysis
 
     }
 
-    private void button3_Click(object sender, EventArgs e)
+    private void RenderButton_Click(object sender, EventArgs e)
     {
 
     }
