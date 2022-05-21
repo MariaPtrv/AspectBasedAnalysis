@@ -1,4 +1,7 @@
 ﻿using System.Text.RegularExpressions;
+using System.Reflection;
+using System.Xml.Linq;
+
 namespace AspectBasedAnalysis
 {
   public partial class Form1 : Form
@@ -25,9 +28,13 @@ namespace AspectBasedAnalysis
     public Form1()
     {
       InitializeComponent();
-      AspectsCheckedListBox.Items.Add("врач", false);
-      AspectsCheckedListBox.Items.Add("стоимость", false);
-      AspectsCheckedListBox.Items.Add("качество", false);
+      AspectsCheckedListBox.Items.Add("качество", true);
+      AspectsCheckedListBox.Items.Add("сервис", true);
+      AspectsCheckedListBox.Items.Add("аппаратура", true);
+      AspectsCheckedListBox.Items.Add("питание", true);
+      AspectsCheckedListBox.Items.Add("удобство", true);
+      AspectsCheckedListBox.Items.Add("размещение", true);
+      AspectsCheckedListBox.Items.Add("расположение", true);
       ResultDataGridView.Visible = false;
       RenderButton.Visible = false;
       StatisticsGroupBox.Visible = false;
@@ -63,6 +70,38 @@ namespace AspectBasedAnalysis
       return matches.Count > 0 ? true : false; 
     }
 
+    private void WriteSettingsToXML(string pathToFile, List<string> aspects)
+    {
+      var pathToFolder =Environment.CurrentDirectory+ "\\SettingsFolder";
+      bool isEnd = false;
+      while (!isEnd)
+      {
+        if (Directory.Exists(pathToFolder))
+        {
+          Directory.Delete(pathToFolder, true);
+        }
+        else
+        {
+          Directory.CreateDirectory(pathToFolder);
+          XDocument xdoc = new XDocument();
+          XElement xsettings = new XElement("settings");
+          XElement xpath = new XElement("dataPath", pathToFile);
+          XElement xfolderPath = new XElement("folderPath", pathToFolder);
+          xsettings.Add(xpath);
+          xsettings.Add(xfolderPath);
+          XElement xaspects = new XElement("aspects");
+          foreach (var aspect in aspects)
+          {
+            XElement xaspect = new XElement("aspect", aspect);
+            xaspects.Add(xaspect);
+          }
+          xsettings.Add(xaspects);
+          xdoc.Add(xsettings);
+          xdoc.Save($"{pathToFolder}\\Input.xml");
+          isEnd = true;
+        }
+      }
+    }
     private void AnalysisButton_Click(object sender, EventArgs e)
     {
       var settings = new analysisSettings();
@@ -74,6 +113,7 @@ namespace AspectBasedAnalysis
         {
           SourseTypeLabel.Text = Path.GetExtension(reviewSourseTextBox.Text) + " файл";
           settings.SourseType = sourseType.File;
+          settings.Sourse = reviewSourseTextBox.Text;
           hasSourse = true;
         }
         else if (isReviewLink(reviewSourseTextBox.Text))
@@ -89,10 +129,11 @@ namespace AspectBasedAnalysis
       if (AspectsCheckedListBox.CheckedItems.Count > 0 && hasSourse)
       {
         NoResultLabel.Visible = false;
-        //стянуть настройки
-        //запустить питон код
-        //предоставить результат
-
+        for (int x = 0; x < AspectsCheckedListBox.CheckedItems.Count; x++)
+        {
+          settings.Aspects.Add(AspectsCheckedListBox.CheckedItems[x].ToString());
+        }
+        WriteSettingsToXML(settings.Sourse, settings.Aspects);
       }
       else MessageBox.Show("Для выполнения анализа необходимо указать: \n- Источник отзывов\n- Перечень анализируемых аспектов", 
                             "Невозможно выполнить анализ",
