@@ -30,9 +30,6 @@
     {
       System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(Form1));
       this.ResultDataGridView = new System.Windows.Forms.DataGridView();
-      this.AspectColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
-      this.DescColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
-      this.TonalityColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
       this.newAspectTextBox = new System.Windows.Forms.TextBox();
       this.button1 = new System.Windows.Forms.Button();
       this.groupBox1 = new System.Windows.Forms.GroupBox();
@@ -60,6 +57,9 @@
       this.PosAspectsCountLabel = new System.Windows.Forms.Label();
       this.ToneWordsCount = new System.Windows.Forms.Label();
       this.AspectsCountLabel = new System.Windows.Forms.Label();
+      this.AspectColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
+      this.DescColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
+      this.TonalityColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
       ((System.ComponentModel.ISupportInitialize)(this.ResultDataGridView)).BeginInit();
       this.groupBox1.SuspendLayout();
       this.groupAspectsList.SuspendLayout();
@@ -76,35 +76,12 @@
             this.DescColumn,
             this.TonalityColumn});
       this.ResultDataGridView.GridColor = System.Drawing.Color.LightGray;
-      this.ResultDataGridView.Location = new System.Drawing.Point(478, 22);
+      this.ResultDataGridView.Location = new System.Drawing.Point(478, 13);
       this.ResultDataGridView.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
       this.ResultDataGridView.Name = "ResultDataGridView";
       this.ResultDataGridView.RowTemplate.Height = 25;
       this.ResultDataGridView.Size = new System.Drawing.Size(783, 364);
       this.ResultDataGridView.TabIndex = 0;
-      // 
-      // AspectColumn
-      // 
-      this.AspectColumn.HeaderText = "Аспект";
-      this.AspectColumn.MinimumWidth = 200;
-      this.AspectColumn.Name = "AspectColumn";
-      this.AspectColumn.ReadOnly = true;
-      this.AspectColumn.Width = 200;
-      // 
-      // DescColumn
-      // 
-      this.DescColumn.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
-      this.DescColumn.HeaderText = "Тональные слова";
-      this.DescColumn.Name = "DescColumn";
-      this.DescColumn.ReadOnly = true;
-      // 
-      // TonalityColumn
-      // 
-      this.TonalityColumn.HeaderText = "Тональность";
-      this.TonalityColumn.MinimumWidth = 150;
-      this.TonalityColumn.Name = "TonalityColumn";
-      this.TonalityColumn.ReadOnly = true;
-      this.TonalityColumn.Width = 150;
       // 
       // newAspectTextBox
       // 
@@ -414,6 +391,30 @@
       this.AspectsCountLabel.TabIndex = 17;
       this.AspectsCountLabel.Text = "000";
       // 
+      // AspectColumn
+      // 
+      this.AspectColumn.HeaderText = "Аспект";
+      this.AspectColumn.MinimumWidth = 200;
+      this.AspectColumn.Name = "AspectColumn";
+      this.AspectColumn.ReadOnly = true;
+      this.AspectColumn.Width = 200;
+      // 
+      // DescColumn
+      // 
+      this.DescColumn.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
+      this.DescColumn.HeaderText = "Тональные слова";
+      this.DescColumn.Name = "DescColumn";
+      this.DescColumn.ReadOnly = true;
+      this.DescColumn.Visible = false;
+      // 
+      // TonalityColumn
+      // 
+      this.TonalityColumn.HeaderText = "Тональность";
+      this.TonalityColumn.MinimumWidth = 150;
+      this.TonalityColumn.Name = "TonalityColumn";
+      this.TonalityColumn.ReadOnly = true;
+      this.TonalityColumn.Width = 150;
+      // 
       // Form1
       // 
       this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 20F);
@@ -465,9 +466,6 @@
     private CheckedListBox AspectsCheckedListBox;
     private Button AnalysButton;
     private OpenFileDialog openFileDialog1;
-    private DataGridViewTextBoxColumn AspectColumn;
-    private DataGridViewTextBoxColumn DescColumn;
-    private DataGridViewTextBoxColumn TonalityColumn;
     private Label label;
     private Label NoResultLabel;
     private Label label1;
@@ -483,5 +481,8 @@
     private Label PosAspectsCountLabel;
     private Label ToneWordsCount;
     private Label AspectsCountLabel;
+    private DataGridViewTextBoxColumn AspectColumn;
+    private DataGridViewTextBoxColumn DescColumn;
+    private DataGridViewTextBoxColumn TonalityColumn;
   }
 }

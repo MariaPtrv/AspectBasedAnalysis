@@ -1,6 +1,10 @@
 ﻿using System.Text.RegularExpressions;
 using System.Reflection;
 using System.Xml.Linq;
+using IronPython.Hosting;
+using Microsoft.Scripting.Hosting;
+using System.Diagnostics;
+using System.Text;
 
 namespace AspectBasedAnalysis
 {
@@ -40,6 +44,21 @@ namespace AspectBasedAnalysis
       StatisticsGroupBox.Visible = false;
     }
 
+    private void StartPython(string pathToFile, List<string> aspects) //переписать, чтобы работало
+    {
+      ScriptEngine engine = Python.CreateEngine();
+      ScriptScope scope = engine.CreateScope();
+      //engine.ExecuteFile("testscript.py", scope);
+      Process process = new Process();
+      process.StartInfo.FileName = "testscript.py";
+      //process.StartInfo.Arguments = "-n";
+      process.StartInfo.WindowStyle = ProcessWindowStyle.Maximized;
+      process.Start();
+      process.WaitForExit();
+
+      dynamic x = scope.GetVariable("answer");
+
+    }
     private void button2_Click(object sender, EventArgs e)
     {
       var path = String.Empty;
@@ -47,6 +66,17 @@ namespace AspectBasedAnalysis
       {
         reviewSourseTextBox.Text = openFileDialog1.FileName;
       }
+    }
+
+    private Dictionary<string, float> GetAnalisysResult()
+    {
+      var pathToAnswerXML = Environment.CurrentDirectory + "\\ResultsFolder\\answer.xml";
+      Dictionary<string, float> resultSetniment = new();
+      XDocument xdoc = XDocument.Load(pathToAnswerXML);
+      var aspects = xdoc.Descendants("aspect");
+      foreach (var aspect in aspects)
+        resultSetniment.Add(aspect.Attribute("name").Value, float.Parse(aspect.Value));
+      return resultSetniment;
     }
 
     private void button1_Click(object sender, EventArgs e)
@@ -133,9 +163,19 @@ namespace AspectBasedAnalysis
         {
           settings.Aspects.Add(AspectsCheckedListBox.CheckedItems[x].ToString());
         }
-        WriteSettingsToXML(settings.Sourse, settings.Aspects);
+
+        // StartPython(settings.Sourse, settings.Aspects);
+        //WriteSettingsToXML(settings.Sourse, settings.Aspects);
+
+
+
+        ResultDataGridView.Visible = true;
+        foreach (var (aspect, val) in GetAnalisysResult())
+          ResultDataGridView.Rows.Add(aspect, val);
       }
-      else MessageBox.Show("Для выполнения анализа необходимо указать: \n- Источник отзывов\n- Перечень анализируемых аспектов", 
+      else MessageBox.Show("Для выполнения анализа необходимо указать: " +
+        "\n- Источник отзывов" +
+        "\n- Перечень анализируемых аспектов", 
                             "Невозможно выполнить анализ",
                              MessageBoxButtons.OK, MessageBoxIcon.Error);
 
