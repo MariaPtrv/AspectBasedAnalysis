@@ -26,10 +26,13 @@
     ///  Required method for Designer support - do not modify
     ///  the contents of this method with the code editor.
     /// </summary>
-    private void InitializeComponent()
+    private async void InitializeComponent()
     {
       System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(Form1));
       this.ResultDataGridView = new System.Windows.Forms.DataGridView();
+      this.AspectColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
+      this.TonalityColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
+      this.DescColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
       this.newAspectTextBox = new System.Windows.Forms.TextBox();
       this.button1 = new System.Windows.Forms.Button();
       this.groupBox1 = new System.Windows.Forms.GroupBox();
@@ -45,25 +48,9 @@
       this.AnalysButton = new System.Windows.Forms.Button();
       this.openFileDialog1 = new System.Windows.Forms.OpenFileDialog();
       this.NoResultLabel = new System.Windows.Forms.Label();
-      this.label4 = new System.Windows.Forms.Label();
-      this.label5 = new System.Windows.Forms.Label();
-      this.label6 = new System.Windows.Forms.Label();
-      this.label7 = new System.Windows.Forms.Label();
-      this.RenderButton = new System.Windows.Forms.Button();
-      this.StatisticsGroupBox = new System.Windows.Forms.GroupBox();
-      this.NeutralAspectsCountLabel = new System.Windows.Forms.Label();
-      this.label12 = new System.Windows.Forms.Label();
-      this.NegAspectsCountLabel = new System.Windows.Forms.Label();
-      this.PosAspectsCountLabel = new System.Windows.Forms.Label();
-      this.ToneWordsCount = new System.Windows.Forms.Label();
-      this.AspectsCountLabel = new System.Windows.Forms.Label();
-      this.AspectColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
-      this.DescColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
-      this.TonalityColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
       ((System.ComponentModel.ISupportInitialize)(this.ResultDataGridView)).BeginInit();
       this.groupBox1.SuspendLayout();
       this.groupAspectsList.SuspendLayout();
-      this.StatisticsGroupBox.SuspendLayout();
       this.SuspendLayout();
       // 
       // ResultDataGridView
@@ -73,15 +60,39 @@
       this.ResultDataGridView.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
       this.ResultDataGridView.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
             this.AspectColumn,
-            this.DescColumn,
-            this.TonalityColumn});
+            this.TonalityColumn,
+            this.DescColumn});
       this.ResultDataGridView.GridColor = System.Drawing.Color.LightGray;
       this.ResultDataGridView.Location = new System.Drawing.Point(478, 13);
       this.ResultDataGridView.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
       this.ResultDataGridView.Name = "ResultDataGridView";
       this.ResultDataGridView.RowTemplate.Height = 25;
-      this.ResultDataGridView.Size = new System.Drawing.Size(783, 364);
+      this.ResultDataGridView.Size = new System.Drawing.Size(425, 364);
       this.ResultDataGridView.TabIndex = 0;
+      // 
+      // AspectColumn
+      // 
+      this.AspectColumn.HeaderText = "Аспект";
+      this.AspectColumn.MinimumWidth = 200;
+      this.AspectColumn.Name = "AspectColumn";
+      this.AspectColumn.ReadOnly = true;
+      this.AspectColumn.Width = 200;
+      // 
+      // TonalityColumn
+      // 
+      this.TonalityColumn.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
+      this.TonalityColumn.HeaderText = "Тональность";
+      this.TonalityColumn.MinimumWidth = 150;
+      this.TonalityColumn.Name = "TonalityColumn";
+      this.TonalityColumn.ReadOnly = true;
+      // 
+      // DescColumn
+      // 
+      this.DescColumn.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
+      this.DescColumn.HeaderText = "Тональные слова";
+      this.DescColumn.Name = "DescColumn";
+      this.DescColumn.ReadOnly = true;
+      this.DescColumn.Visible = false;
       // 
       // newAspectTextBox
       // 
@@ -235,7 +246,7 @@
       this.AnalysButton.TabIndex = 6;
       this.AnalysButton.Text = "Анализ";
       this.AnalysButton.UseVisualStyleBackColor = false;
-      this.AnalysButton.Click += new System.EventHandler(this.AnalysisButton_Click);
+      this.AnalysButton.Click += new System.EventHandler(await this.AnalysisButton_ClickAsync);
       // 
       // openFileDialog1
       // 
@@ -247,182 +258,18 @@
       this.NoResultLabel.BackColor = System.Drawing.Color.Transparent;
       this.NoResultLabel.Font = new System.Drawing.Font("Arial Narrow", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
       this.NoResultLabel.ForeColor = System.Drawing.Color.Silver;
-      this.NoResultLabel.Location = new System.Drawing.Point(769, 242);
+      this.NoResultLabel.Location = new System.Drawing.Point(577, 213);
       this.NoResultLabel.Name = "NoResultLabel";
       this.NoResultLabel.Size = new System.Drawing.Size(228, 23);
       this.NoResultLabel.TabIndex = 12;
       this.NoResultLabel.Text = "Нет данных для отображения";
-      // 
-      // label4
-      // 
-      this.label4.AutoSize = true;
-      this.label4.Location = new System.Drawing.Point(17, 28);
-      this.label4.Margin = new System.Windows.Forms.Padding(3, 5, 3, 0);
-      this.label4.Name = "label4";
-      this.label4.Size = new System.Drawing.Size(145, 20);
-      this.label4.TabIndex = 13;
-      this.label4.Text = "Количество аспектов:";
-      // 
-      // label5
-      // 
-      this.label5.AutoSize = true;
-      this.label5.Location = new System.Drawing.Point(17, 54);
-      this.label5.Margin = new System.Windows.Forms.Padding(3, 5, 3, 0);
-      this.label5.Name = "label5";
-      this.label5.Size = new System.Drawing.Size(190, 20);
-      this.label5.TabIndex = 14;
-      this.label5.Text = "Количество тональных слов:";
-      // 
-      // label6
-      // 
-      this.label6.AutoSize = true;
-      this.label6.Location = new System.Drawing.Point(17, 79);
-      this.label6.Margin = new System.Windows.Forms.Padding(3, 5, 3, 0);
-      this.label6.Name = "label6";
-      this.label6.Size = new System.Drawing.Size(248, 20);
-      this.label6.TabIndex = 15;
-      this.label6.Text = "Количество положительных аспектов:";
-      // 
-      // label7
-      // 
-      this.label7.AutoSize = true;
-      this.label7.Location = new System.Drawing.Point(17, 104);
-      this.label7.Margin = new System.Windows.Forms.Padding(3, 5, 3, 0);
-      this.label7.Name = "label7";
-      this.label7.Size = new System.Drawing.Size(219, 20);
-      this.label7.TabIndex = 16;
-      this.label7.Text = "Количество негативных аспектов:";
-      // 
-      // RenderButton
-      // 
-      this.RenderButton.BackColor = System.Drawing.Color.White;
-      this.RenderButton.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
-      this.RenderButton.ForeColor = System.Drawing.Color.Black;
-      this.RenderButton.Location = new System.Drawing.Point(1116, 400);
-      this.RenderButton.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
-      this.RenderButton.Name = "RenderButton";
-      this.RenderButton.Size = new System.Drawing.Size(145, 31);
-      this.RenderButton.TabIndex = 19;
-      this.RenderButton.Text = "Визуализировать";
-      this.RenderButton.UseVisualStyleBackColor = false;
-      this.RenderButton.Click += new System.EventHandler(this.RenderButton_Click);
-      // 
-      // StatisticsGroupBox
-      // 
-      this.StatisticsGroupBox.BackColor = System.Drawing.Color.White;
-      this.StatisticsGroupBox.Controls.Add(this.NeutralAspectsCountLabel);
-      this.StatisticsGroupBox.Controls.Add(this.label12);
-      this.StatisticsGroupBox.Controls.Add(this.NegAspectsCountLabel);
-      this.StatisticsGroupBox.Controls.Add(this.PosAspectsCountLabel);
-      this.StatisticsGroupBox.Controls.Add(this.ToneWordsCount);
-      this.StatisticsGroupBox.Controls.Add(this.AspectsCountLabel);
-      this.StatisticsGroupBox.Controls.Add(this.label4);
-      this.StatisticsGroupBox.Controls.Add(this.label5);
-      this.StatisticsGroupBox.Controls.Add(this.label6);
-      this.StatisticsGroupBox.Controls.Add(this.label7);
-      this.StatisticsGroupBox.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
-      this.StatisticsGroupBox.ForeColor = System.Drawing.Color.Black;
-      this.StatisticsGroupBox.Location = new System.Drawing.Point(478, 394);
-      this.StatisticsGroupBox.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
-      this.StatisticsGroupBox.Name = "StatisticsGroupBox";
-      this.StatisticsGroupBox.Padding = new System.Windows.Forms.Padding(3, 4, 3, 4);
-      this.StatisticsGroupBox.RightToLeft = System.Windows.Forms.RightToLeft.No;
-      this.StatisticsGroupBox.Size = new System.Drawing.Size(425, 165);
-      this.StatisticsGroupBox.TabIndex = 6;
-      this.StatisticsGroupBox.TabStop = false;
-      // 
-      // NeutralAspectsCountLabel
-      // 
-      this.NeutralAspectsCountLabel.AutoSize = true;
-      this.NeutralAspectsCountLabel.Location = new System.Drawing.Point(368, 129);
-      this.NeutralAspectsCountLabel.Margin = new System.Windows.Forms.Padding(3, 5, 3, 0);
-      this.NeutralAspectsCountLabel.Name = "NeutralAspectsCountLabel";
-      this.NeutralAspectsCountLabel.Size = new System.Drawing.Size(30, 20);
-      this.NeutralAspectsCountLabel.TabIndex = 22;
-      this.NeutralAspectsCountLabel.Text = "000";
-      // 
-      // label12
-      // 
-      this.label12.AutoSize = true;
-      this.label12.Location = new System.Drawing.Point(17, 129);
-      this.label12.Margin = new System.Windows.Forms.Padding(3, 5, 3, 0);
-      this.label12.Name = "label12";
-      this.label12.Size = new System.Drawing.Size(230, 20);
-      this.label12.TabIndex = 21;
-      this.label12.Text = "Количество нейтральных аспектов:";
-      // 
-      // NegAspectsCountLabel
-      // 
-      this.NegAspectsCountLabel.AutoSize = true;
-      this.NegAspectsCountLabel.Location = new System.Drawing.Point(368, 100);
-      this.NegAspectsCountLabel.Margin = new System.Windows.Forms.Padding(3, 5, 3, 0);
-      this.NegAspectsCountLabel.Name = "NegAspectsCountLabel";
-      this.NegAspectsCountLabel.Size = new System.Drawing.Size(30, 20);
-      this.NegAspectsCountLabel.TabIndex = 20;
-      this.NegAspectsCountLabel.Text = "000";
-      // 
-      // PosAspectsCountLabel
-      // 
-      this.PosAspectsCountLabel.AutoSize = true;
-      this.PosAspectsCountLabel.Location = new System.Drawing.Point(368, 75);
-      this.PosAspectsCountLabel.Margin = new System.Windows.Forms.Padding(3, 5, 3, 0);
-      this.PosAspectsCountLabel.Name = "PosAspectsCountLabel";
-      this.PosAspectsCountLabel.Size = new System.Drawing.Size(30, 20);
-      this.PosAspectsCountLabel.TabIndex = 19;
-      this.PosAspectsCountLabel.Text = "000";
-      // 
-      // ToneWordsCount
-      // 
-      this.ToneWordsCount.AutoSize = true;
-      this.ToneWordsCount.Location = new System.Drawing.Point(368, 50);
-      this.ToneWordsCount.Margin = new System.Windows.Forms.Padding(3, 5, 3, 0);
-      this.ToneWordsCount.Name = "ToneWordsCount";
-      this.ToneWordsCount.Size = new System.Drawing.Size(30, 20);
-      this.ToneWordsCount.TabIndex = 18;
-      this.ToneWordsCount.Text = "000";
-      // 
-      // AspectsCountLabel
-      // 
-      this.AspectsCountLabel.AutoSize = true;
-      this.AspectsCountLabel.Location = new System.Drawing.Point(368, 28);
-      this.AspectsCountLabel.Margin = new System.Windows.Forms.Padding(3, 5, 3, 0);
-      this.AspectsCountLabel.Name = "AspectsCountLabel";
-      this.AspectsCountLabel.Size = new System.Drawing.Size(30, 20);
-      this.AspectsCountLabel.TabIndex = 17;
-      this.AspectsCountLabel.Text = "000";
-      // 
-      // AspectColumn
-      // 
-      this.AspectColumn.HeaderText = "Аспект";
-      this.AspectColumn.MinimumWidth = 200;
-      this.AspectColumn.Name = "AspectColumn";
-      this.AspectColumn.ReadOnly = true;
-      this.AspectColumn.Width = 200;
-      // 
-      // DescColumn
-      // 
-      this.DescColumn.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
-      this.DescColumn.HeaderText = "Тональные слова";
-      this.DescColumn.Name = "DescColumn";
-      this.DescColumn.ReadOnly = true;
-      this.DescColumn.Visible = false;
-      // 
-      // TonalityColumn
-      // 
-      this.TonalityColumn.HeaderText = "Тональность";
-      this.TonalityColumn.MinimumWidth = 150;
-      this.TonalityColumn.Name = "TonalityColumn";
-      this.TonalityColumn.ReadOnly = true;
-      this.TonalityColumn.Width = 150;
       // 
       // Form1
       // 
       this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 20F);
       this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
       this.BackColor = System.Drawing.Color.White;
-      this.ClientSize = new System.Drawing.Size(1276, 606);
-      this.Controls.Add(this.StatisticsGroupBox);
-      this.Controls.Add(this.RenderButton);
+      this.ClientSize = new System.Drawing.Size(919, 625);
       this.Controls.Add(this.NoResultLabel);
       this.Controls.Add(this.AnalysButton);
       this.Controls.Add(this.groupAspectsList);
@@ -444,8 +291,6 @@
       this.groupBox1.PerformLayout();
       this.groupAspectsList.ResumeLayout(false);
       this.groupAspectsList.PerformLayout();
-      this.StatisticsGroupBox.ResumeLayout(false);
-      this.StatisticsGroupBox.PerformLayout();
       this.ResumeLayout(false);
       this.PerformLayout();
 
@@ -469,20 +314,8 @@
     private Label label;
     private Label NoResultLabel;
     private Label label1;
-    private Label label4;
-    private Label label5;
-    private Label label6;
-    private Label label7;
-    private Button RenderButton;
-    private GroupBox StatisticsGroupBox;
-    private Label NeutralAspectsCountLabel;
-    private Label label12;
-    private Label NegAspectsCountLabel;
-    private Label PosAspectsCountLabel;
-    private Label ToneWordsCount;
-    private Label AspectsCountLabel;
     private DataGridViewTextBoxColumn AspectColumn;
-    private DataGridViewTextBoxColumn DescColumn;
     private DataGridViewTextBoxColumn TonalityColumn;
+    private DataGridViewTextBoxColumn DescColumn;
   }
 }
