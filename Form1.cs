@@ -257,38 +257,6 @@ namespace AspectBasedAnalysis
       return addedReviews;
     }
 
-    private void WriteSettingsToXML(string pathToFile, List<string> aspects)
-    {
-      var pathToFolder =Environment.CurrentDirectory+ "\\SettingsFolder";
-      bool isEnd = false;
-      while (!isEnd)
-      {
-        if (Directory.Exists(pathToFolder))
-        {
-          Directory.Delete(pathToFolder, true);
-        }
-        else
-        {
-          Directory.CreateDirectory(pathToFolder);
-          XDocument xdoc = new XDocument();
-          XElement xsettings = new XElement("settings");
-          XElement xpath = new XElement("dataPath", pathToFile);
-          XElement xfolderPath = new XElement("folderPath", pathToFolder);
-          xsettings.Add(xpath);
-          xsettings.Add(xfolderPath);
-          XElement xaspects = new XElement("aspects");
-          foreach (var aspect in aspects)
-          {
-            XElement xaspect = new XElement("aspect", aspect);
-            xaspects.Add(xaspect);
-          }
-          xsettings.Add(xaspects);
-          xdoc.Add(xsettings);
-          xdoc.Save($"{pathToFolder}\\Input.xml");
-          isEnd = true;
-        }
-      }
-    }
     private async Task AnalysisButton_ClickAsync(object sender, EventArgs e)
     {
       var settings = new analysisSettings();
@@ -324,6 +292,9 @@ namespace AspectBasedAnalysis
         if (settings.SourseType == sourseType.File)
         {
           StartPython(settings.Sourse, settings.Aspects);
+          XDocument doc = XDocument.Load("answer.xml");
+          foreach (var aspect in doc.Root.Elements("aspect"))
+            ResultDataGridView.Rows.Add(aspect.Attribute("name"), aspect.Value);
         }
         else if (settings.SourseType == sourseType.Link)
         {
