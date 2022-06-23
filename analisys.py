@@ -4,16 +4,6 @@
 # In[1]:
 
 
-get_ipython().system('pip install ruwordnet')
-get_ipython().system('pip install elementpath')
-get_ipython().system('pip install ruwordnet')
-get_ipython().system('pip install pandas')
-get_ipython().system('pip install regex')
-get_ipython().system('pip install nltk')
-get_ipython().system('pip install pymystem3')
-get_ipython().system('pip install strings')
-get_ipython().system('pip install spacy')
-get_ipython().system('pip install dostoevsky')
 
 
 # In[2]:
@@ -24,7 +14,7 @@ aspects_list=["качество", "сервис", "аппаратура","удо
 
 # In[3]:
 
-
+import elementpath
 from ruwordnet import RuWordNet
 wn = RuWordNet()
 from xml.etree import ElementTree

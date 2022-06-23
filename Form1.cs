@@ -38,18 +38,19 @@ namespace AspectBasedAnalysis
       ResultDataGridView.Visible = false;
     }
 
-    private void StartPython(string pathToFile, List<string> aspects) //переписать, чтобы работало
+    private void StartPython(string pathToFile, List<string> aspects) ///////////
     {
       var engine = Python.CreateEngine();
       var searchPaths = new List<string>();
       ScriptScope scope = engine.CreateScope();
-      searchPaths.Add(@"C:\Users\by_na\source\repos\AspectBasedAnalysis\bin\Debug\net6.0-windows\Lib");
+      searchPaths.Add(@"C:\Users\by_na\AppData\Local\Packages");
+      searchPaths.Add(@"C:\Users\by_na\AppData\Local\Packages\PythonSoftwareFoundation.Python.3.10_qbz5n2kfra8p0\LocalCache\local-packages\Python310\site-packages");
       engine.SetSearchPaths(searchPaths);
       scope.SetVariable("aspects", aspects);
       scope.SetVariable("path", pathToFile);
-      engine.ExecuteFile("analysis.py", scope);
-      dynamic aspects_list = scope.GetVariable("aspects_list");
-      dynamic result = aspects_list();
+      //engine.ExecuteFile("analysis.py", scope);
+      //dynamic aspects_list = scope.GetVariable("aspects_list");
+      //dynamic result = aspects_list();
       ResultDataGridView.Visible = true;
     }
 
@@ -257,7 +258,7 @@ namespace AspectBasedAnalysis
       return addedReviews;
     }
 
-    private async Task AnalysisButton_ClickAsync(object sender, EventArgs e)
+    private void AnalysisButton_Click(object sender, EventArgs e)
     {
       var settings = new analysisSettings();
       var hasSourse = false;
@@ -294,7 +295,7 @@ namespace AspectBasedAnalysis
           StartPython(settings.Sourse, settings.Aspects);
           XDocument doc = XDocument.Load("answer.xml");
           foreach (var aspect in doc.Root.Elements("aspect"))
-            ResultDataGridView.Rows.Add(aspect.Attribute("name"), aspect.Value);
+            ResultDataGridView.Rows.Add(aspect.Attribute("name").Value, aspect.Value);
         }
         else if (settings.SourseType == sourseType.Link)
         {

@@ -246,7 +246,7 @@
       this.AnalysButton.TabIndex = 6;
       this.AnalysButton.Text = "Анализ";
       this.AnalysButton.UseVisualStyleBackColor = false;
-      this.AnalysButton.Click += new System.EventHandler(await this.AnalysisButton_ClickAsync);
+      this.AnalysButton.Click += new System.EventHandler(this.AnalysisButton_Click);
       // 
       // openFileDialog1
       // 
