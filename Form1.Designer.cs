@@ -66,6 +66,7 @@
       this.ResultDataGridView.Location = new System.Drawing.Point(478, 13);
       this.ResultDataGridView.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
       this.ResultDataGridView.Name = "ResultDataGridView";
+      this.ResultDataGridView.RowHeadersWidth = 51;
       this.ResultDataGridView.RowTemplate.Height = 25;
       this.ResultDataGridView.Size = new System.Drawing.Size(425, 364);
       this.ResultDataGridView.TabIndex = 0;
@@ -90,6 +91,7 @@
       // 
       this.DescColumn.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
       this.DescColumn.HeaderText = "Тональные слова";
+      this.DescColumn.MinimumWidth = 6;
       this.DescColumn.Name = "DescColumn";
       this.DescColumn.ReadOnly = true;
       this.DescColumn.Visible = false;
@@ -99,7 +101,7 @@
       this.newAspectTextBox.Location = new System.Drawing.Point(19, 29);
       this.newAspectTextBox.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
       this.newAspectTextBox.Name = "newAspectTextBox";
-      this.newAspectTextBox.Size = new System.Drawing.Size(329, 26);
+      this.newAspectTextBox.Size = new System.Drawing.Size(329, 30);
       this.newAspectTextBox.TabIndex = 1;
       // 
       // button1
@@ -141,7 +143,7 @@
       this.label1.AutoSize = true;
       this.label1.Location = new System.Drawing.Point(40, 71);
       this.label1.Name = "label1";
-      this.label1.Size = new System.Drawing.Size(201, 20);
+      this.label1.Size = new System.Drawing.Size(247, 24);
       this.label1.TabIndex = 12;
       this.label1.Text = "- Ссылка на сайте otzovik.com;";
       // 
@@ -150,7 +152,7 @@
       this.label.AutoSize = true;
       this.label.Location = new System.Drawing.Point(6, 140);
       this.label.Name = "label";
-      this.label.Size = new System.Drawing.Size(124, 20);
+      this.label.Size = new System.Drawing.Size(155, 24);
       this.label.TabIndex = 11;
       this.label.Text = "Источник отзывов:";
       // 
@@ -159,7 +161,7 @@
       this.label3.AutoSize = true;
       this.label3.Location = new System.Drawing.Point(40, 50);
       this.label3.Name = "label3";
-      this.label3.Size = new System.Drawing.Size(189, 20);
+      this.label3.Size = new System.Drawing.Size(238, 24);
       this.label3.TabIndex = 10;
       this.label3.Text = "- Путь к файлу с отзывами ();";
       // 
@@ -168,7 +170,7 @@
       this.label2.AutoSize = true;
       this.label2.Location = new System.Drawing.Point(7, 28);
       this.label2.Name = "label2";
-      this.label2.Size = new System.Drawing.Size(227, 20);
+      this.label2.Size = new System.Drawing.Size(284, 24);
       this.label2.TabIndex = 9;
       this.label2.Text = "Источником может быть один типа:";
       // 
@@ -178,7 +180,7 @@
       this.reviewSourseTextBox.Location = new System.Drawing.Point(7, 109);
       this.reviewSourseTextBox.Margin = new System.Windows.Forms.Padding(5);
       this.reviewSourseTextBox.Name = "reviewSourseTextBox";
-      this.reviewSourseTextBox.Size = new System.Drawing.Size(341, 22);
+      this.reviewSourseTextBox.Size = new System.Drawing.Size(341, 26);
       this.reviewSourseTextBox.TabIndex = 8;
       this.reviewSourseTextBox.TextChanged += new System.EventHandler(this.reviewSourseTextBox_TextChanged);
       // 
@@ -203,7 +205,7 @@
       this.SourseTypeLabel.Font = new System.Drawing.Font("Arial Narrow", 12F, System.Drawing.FontStyle.Italic, System.Drawing.GraphicsUnit.Point);
       this.SourseTypeLabel.Location = new System.Drawing.Point(130, 140);
       this.SourseTypeLabel.Name = "SourseTypeLabel";
-      this.SourseTypeLabel.Size = new System.Drawing.Size(0, 20);
+      this.SourseTypeLabel.Size = new System.Drawing.Size(0, 24);
       this.SourseTypeLabel.TabIndex = 6;
       // 
       // groupAspectsList
@@ -231,7 +233,7 @@
       this.AspectsCheckedListBox.Location = new System.Drawing.Point(19, 63);
       this.AspectsCheckedListBox.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
       this.AspectsCheckedListBox.Name = "AspectsCheckedListBox";
-      this.AspectsCheckedListBox.Size = new System.Drawing.Size(329, 193);
+      this.AspectsCheckedListBox.Size = new System.Drawing.Size(329, 179);
       this.AspectsCheckedListBox.TabIndex = 4;
       // 
       // AnalysButton
@@ -260,13 +262,13 @@
       this.NoResultLabel.ForeColor = System.Drawing.Color.Silver;
       this.NoResultLabel.Location = new System.Drawing.Point(577, 213);
       this.NoResultLabel.Name = "NoResultLabel";
-      this.NoResultLabel.Size = new System.Drawing.Size(228, 23);
+      this.NoResultLabel.Size = new System.Drawing.Size(285, 29);
       this.NoResultLabel.TabIndex = 12;
       this.NoResultLabel.Text = "Нет данных для отображения";
       // 
       // Form1
       // 
-      this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 20F);
+      this.AutoScaleDimensions = new System.Drawing.SizeF(10F, 24F);
       this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
       this.BackColor = System.Drawing.Color.White;
       this.ClientSize = new System.Drawing.Size(919, 625);

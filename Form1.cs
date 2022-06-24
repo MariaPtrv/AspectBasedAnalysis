@@ -23,13 +23,13 @@ namespace AspectBasedAnalysis
     {
       public string Sourse { get; set; }
       public sourseType SourseType { get; set; }
-      public List<string> Aspects { get; set; }
+      public List<string?> Aspects { get; set; }
 
       public analysisSettings()
       {
         Sourse = "";
         SourseType = sourseType.None;
-        Aspects = new List<string>();
+        Aspects = new List<string?>();
       }
     }
     public Form1()
@@ -38,17 +38,19 @@ namespace AspectBasedAnalysis
       ResultDataGridView.Visible = false;
     }
 
-    private void StartPython(string pathToFile, List<string> aspects) ///////////
+    private void StartPython(string pathToFile, List<string?> aspects) ///////////
     {
       var engine = Python.CreateEngine();
       var searchPaths = new List<string>();
       ScriptScope scope = engine.CreateScope();
       searchPaths.Add(@"C:\Users\by_na\AppData\Local\Packages");
+      searchPaths.Add(@"C:\Users\by_na\source\repos\AspectBasedAnalysis\Libs");
+      searchPaths.Add(@"C:\ProgramData\Anaconda3\Lib\site-packages");
       searchPaths.Add(@"C:\Users\by_na\AppData\Local\Packages\PythonSoftwareFoundation.Python.3.10_qbz5n2kfra8p0\LocalCache\local-packages\Python310\site-packages");
       engine.SetSearchPaths(searchPaths);
       scope.SetVariable("aspects", aspects);
       scope.SetVariable("path", pathToFile);
-      //engine.ExecuteFile("analysis.py", scope);
+      engine.ExecuteFile("analysis.py", scope);
       //dynamic aspects_list = scope.GetVariable("aspects_list");
       //dynamic result = aspects_list();
       ResultDataGridView.Visible = true;
@@ -181,7 +183,7 @@ namespace AspectBasedAnalysis
       }
     }
 
-    private Dictionary<string, float> GetAnalisysResult()
+    private void GetAnalisysResult()
     {
       var pathToAnswerXML = Environment.CurrentDirectory + "\\ResultsFolder\\answer.xml";
       Dictionary<string, float> resultSetniment = new();
@@ -189,7 +191,7 @@ namespace AspectBasedAnalysis
       var aspects = xdoc.Descendants("aspect");
       foreach (var aspect in aspects)
         resultSetniment.Add(aspect.Attribute("name").Value, float.Parse(aspect.Value));
-      return resultSetniment;
+      //return resultSetniment;
     }
 
     private void button1_Click(object sender, EventArgs e)
@@ -295,17 +297,15 @@ namespace AspectBasedAnalysis
           StartPython(settings.Sourse, settings.Aspects);
           XDocument doc = XDocument.Load("answer.xml");
           foreach (var aspect in doc.Root.Elements("aspect"))
-            ResultDataGridView.Rows.Add(aspect.Attribute("name").Value, aspect.Value);
+            ResultDataGridView.Rows.Add(aspect.Attribute("name")?.Value, aspect.Value);
         }
         else if (settings.SourseType == sourseType.Link)
         {
           startParserAsync(settings.Sourse);
-          MessageBox.Show("Отзывы были получены с сайта Отзовик", 
-            "Отзывы получены", 
+          MessageBox.Show("Отзывы были получены с сайта Отзовик",
+            "Отзывы получены",
             MessageBoxButtons.OK, MessageBoxIcon.Information);
-
         }
-
       }
       else MessageBox.Show("Для выполнения анализа необходимо указать: " +
         "\n- Источник отзывов" +
