@@ -51,8 +51,6 @@ namespace AspectBasedAnalysis
       scope.SetVariable("aspects", aspects);
       scope.SetVariable("path", pathToFile);
       engine.ExecuteFile("analysis.py", scope);
-      //dynamic aspects_list = scope.GetVariable("aspects_list");
-      //dynamic result = aspects_list();
       ResultDataGridView.Visible = true;
     }
 
